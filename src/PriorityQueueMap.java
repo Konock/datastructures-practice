@@ -6,9 +6,10 @@ import java.util.TreeMap;
 public class PriorityQueueMap<T> {
 
     TreeMap<Integer, T> priorityQueue;
+    PrioComparator comparator = new PrioComparator();
 
     PriorityQueueMap() {
-        priorityQueue = new TreeMap<>(new PrioComparator());
+        priorityQueue = new TreeMap<>(comparator);
     }
 
     void enqueue(T element, int priority) {
@@ -16,7 +17,12 @@ public class PriorityQueueMap<T> {
     }
 
     void dequeue() {
-        priorityQueue.remove(priorityQueue.firstKey());
+        TreeMap<Integer, T> newPriorityQueue = new TreeMap<>(comparator);
+        List<Map.Entry<Integer, T>> entries = new ArrayList<>(priorityQueue.entrySet());
+        for (int i = 1; i < entries.size(); i++) {
+            newPriorityQueue.put(entries.get(i).getKey(), entries.get(i).getValue());
+        }
+        priorityQueue = newPriorityQueue;
     }
 
     int count() {
