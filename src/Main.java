@@ -11,5 +11,6 @@ public class Main {
         priorityQueue.enqueue(new TestObject("10"), 7);
         priorityQueue.dequeue();
         System.out.println(priorityQueue.count());
+        System.out.println(priorityQueue.toString());
     }
 }
