@@ -23,6 +23,8 @@ public class PriorityQueue<T> {
     }
 
     T dequeue() {
+        Map.Entry<T, Integer> entry = priorityQueue.poll();
+        return entry.getKey();
     }
 
     int count() {
