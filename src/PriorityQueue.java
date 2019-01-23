@@ -31,4 +31,13 @@ public class PriorityQueue<T> {
         return priorityQueue.size();
     }
 
+    @Override
+    public String toString() {
+        String text = "";
+        for (Map.Entry<T, Integer> entry : priorityQueue) {
+            text += "Task: " + entry.getKey() + ", Prio: " + entry.getValue().toString() + "\n";
+        }
+        return text;
+    }
+
 }
