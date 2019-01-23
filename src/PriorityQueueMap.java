@@ -16,13 +16,14 @@ public class PriorityQueueMap<T> {
         priorityQueue.put(priority, element);
     }
 
-    void dequeue() {
+    T dequeue() {
         TreeMap<Integer, T> newPriorityQueue = new TreeMap<>(comparator);
         List<Map.Entry<Integer, T>> entries = new ArrayList<>(priorityQueue.entrySet());
         for (int i = 1; i < entries.size(); i++) {
             newPriorityQueue.put(entries.get(i).getKey(), entries.get(i).getValue());
         }
         priorityQueue = newPriorityQueue;
+        return entries.get(0).getValue();
     }
 
     int count() {
