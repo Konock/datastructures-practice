@@ -30,6 +30,45 @@ public class PriorityQueueList<T> {
         }
     }
 
+    T dequeue() {
+        if (priorityQueue.size() == 1) {
+            return priorityQueue.remove(0).getKey();
+        }
+
+        Map.Entry<T, Integer> tmp = priorityQueue.get(0);
+        priorityQueue.set(0, priorityQueue.remove(priorityQueue.size()-1));
+        int index = 0;
+        int left = 1;
+
+        while(left < priorityQueue.size()) {
+            int max = left;
+            int right = left + 1;
+            if(right < priorityQueue.size()) {
+                if(compareEntries(priorityQueue.get(right), priorityQueue.get(left)) > 0) {
+                    max = right;
+                }
+            }
+            Map.Entry<T, Integer> child = priorityQueue.get(index);
+            Map.Entry<T, Integer> parent = priorityQueue.get(max);
+
+            if(compareEntries(parent, child) < 0) {
+                priorityQueue.set(index, child);
+                priorityQueue.set(max, parent);
+
+                index = max;
+                left = 2*index+1;
+            }
+            else {
+                break;
+            }
+        }
+        return tmp.getKey();
+    }
+
+    int count() {
+        return priorityQueue.size();
+    }
+
     @Override
     public String toString() {
         String text = "";
