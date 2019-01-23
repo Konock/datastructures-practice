@@ -1,3 +1,4 @@
+import java.util.AbstractMap;
 import java.util.Map;
 import java.util.Queue;
 
@@ -17,6 +18,8 @@ public class PriorityQueue<T> {
     }
 
     void enqueue(T element, int priority) {
+        Map.Entry<T, Integer> entry = new AbstractMap.SimpleEntry<>(element, priority);
+        priorityQueue.offer(entry);
     }
 
     T dequeue() {
