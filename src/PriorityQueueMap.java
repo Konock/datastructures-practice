@@ -6,10 +6,11 @@ public class PriorityQueueMap<T> {
     TreeMap<Integer, T> priorityQueue;
 
     PriorityQueueMap() {
-        priorityQueue = new TreeMap<>();
+        priorityQueue = new TreeMap<>(new PrioComparator());
     }
 
     void enqueue(T element, int priority) {
+        priorityQueue.put(priority, element);
     }
 
     void dequeue() {
