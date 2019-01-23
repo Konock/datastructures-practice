@@ -23,5 +23,23 @@ public class Main {
         priorityQueue2.dequeue();
         System.out.println(priorityQueue2.count());
         System.out.println(priorityQueue2.toString());
+
+        // Test PriorityQueueList
+        PriorityQueueList<TestObject> priorityQueue3 = new PriorityQueueList<>();
+        priorityQueue3.enqueue(new TestObject("1"), 5);
+        System.out.println(priorityQueue3.toString());
+        priorityQueue3.enqueue(new TestObject("3"), 4);
+        System.out.println(priorityQueue3.toString());
+        priorityQueue3.enqueue(new TestObject("2"), 5);
+        System.out.println(priorityQueue3.toString());
+        //priorityQueue3.dequeue();
+        System.out.println(priorityQueue3.toString());
+        priorityQueue3.enqueue(new TestObject("7"), 7);
+        System.out.println(priorityQueue3.toString());
+        priorityQueue3.enqueue(new TestObject("10"), 7);
+        System.out.println(priorityQueue3.toString());
+        //priorityQueue3.dequeue();
+        System.out.println(priorityQueue3.toString());
+        //System.out.println(priorityQueue3.count());
     }
 }
